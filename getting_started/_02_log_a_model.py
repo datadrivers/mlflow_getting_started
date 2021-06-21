@@ -1,19 +1,19 @@
 """ Lets log a simple sklearn model
 """
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_breast_cancer, load_wine
+from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, accuracy_score
 import mlflow.sklearn
 from config import mlflow_server_uri
 
 # Hyperparameter settings
-max_depth = 3
+max_depth = 2
 
 if __name__ == '__main__':
 
     # Load data
-    X, y = load_breast_cancer(return_X_y=True)
+    X, y = load_wine(return_X_y=True)
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
     # Train the model
@@ -22,8 +22,8 @@ if __name__ == '__main__':
 
     # Evaluate
     y_pred = clf.predict(x_test)
-    precision = precision_score(y_test, y_pred)
-    recall = recall_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, average="weighted")
+    recall = recall_score(y_test, y_pred, average="weighted")
     accuracy = accuracy_score(y_test, y_pred)
 
     # Connect to mlflow server
@@ -33,7 +33,6 @@ if __name__ == '__main__':
     mlflow.set_experiment("My Wine Classifier")
 
     # Log parameter and metrics
-    # mlflow.sklearn.autolog()
     mlflow.log_param("max_dept", max_depth)
     mlflow.log_metrics({
         "precision": precision,
@@ -47,5 +46,5 @@ if __name__ == '__main__':
 
     # Save a model under a specific path
     # mlflow.sklearn.save_model(sk_model=clf,
-    #                           path="../my_cloud/my_specific_bucket/my_specific_saved_model")
+    #                           path="../../my_cloud/my_specific_bucket/my_specific_saved_model")
 
