@@ -31,7 +31,6 @@ class MyCustomModel(mlflow.pyfunc.PythonModel):
         processed_model_input = self.preprocess_input(model_input.copy())
         return self.rf.predict(processed_model_input)
 
-# WAS IST CONTEXT?
 
 if __name__== "__main__":
 
@@ -82,7 +81,7 @@ if __name__== "__main__":
 
     mlflow.pyfunc.log_model(python_model=my_custom_model,
                             artifact_path="rf_inc_pp",
-                            registered_model_name="MyModel02",
+                            #registered_model_name="MyModel02",
                             conda_env=conda_env)
 
 
