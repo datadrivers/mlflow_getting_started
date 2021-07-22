@@ -10,7 +10,7 @@ from mlflow.models.signature import infer_signature
 from config import mlflow_server_uri
 
 # Set final parameter
-max_depth = 3
+max_depth = 2
 
 
 class DecisionTreeModel:
