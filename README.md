@@ -47,10 +47,10 @@ but this has some disadvantages as described above.
 
 ### Create an endpoint
 
-Once a model is registred, one can create an endpoint via conda typing the following 
+Once a model is registered, one can serve the model 
 
 ```console
-mlflow models serve -m "models:/{model_name}/{model_version} -p yourport
+mlflow models serve -m "models:/{model_name}/{model_version}" -p yourport
 ```
 
 Make sure to set the tracking uri in the corresponding terminal.
@@ -58,6 +58,9 @@ Make sure to set the tracking uri in the corresponding terminal.
 ```console
 export MLFLOW_TRACKING_URI='http://localhost:5000'
 ```
+
+Note that there are few other opportunities, e.g. building a docker-image or building specific images
+to deploy the model to different cloud platforms.
 
 ## Further reading
 
