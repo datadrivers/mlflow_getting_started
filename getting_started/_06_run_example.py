@@ -4,7 +4,7 @@ import mlflow.pyfunc
 from config import mlflow_server_uri
 from utils import load_airbnb_data
 
-model_name = "MyModel02"
+model_name = "My_airbnb_model"
 version = '1'
 
 if __name__ == "__main__":

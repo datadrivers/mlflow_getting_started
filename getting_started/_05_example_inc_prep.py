@@ -55,6 +55,6 @@ if __name__ == "__main__":
     with mlflow.start_run(run_name="RF Model") as run:
         mlflow.sklearn.log_model(rf,
                                  "rf",
-                                 registered_model_name="MyModel02")
+                                 registered_model_name="My_airbnb_model")
         mlflow.log_metric("mse", rf_mse)
 

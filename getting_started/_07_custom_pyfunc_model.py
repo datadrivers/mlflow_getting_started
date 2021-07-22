@@ -32,7 +32,7 @@ class MyCustomModel(mlflow.pyfunc.PythonModel):
         return self.rf.predict(processed_model_input)
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
 
     # Connect to mlflow server
     mlflow.set_tracking_uri(mlflow_server_uri)
@@ -81,7 +81,7 @@ if __name__== "__main__":
 
     mlflow.pyfunc.log_model(python_model=my_custom_model,
                             artifact_path="rf_inc_pp",
-                            #registered_model_name="MyModel02",
+                            registered_model_name="My_airbnb_model",
                             conda_env=conda_env)
 
 

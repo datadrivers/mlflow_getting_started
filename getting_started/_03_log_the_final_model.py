@@ -42,7 +42,7 @@ if __name__ == '__main__':
     # Set Experiment
     mlflow.set_experiment("My Wine Classifier")
 
-    with mlflow.start_run(run_name="final_run"):
+    with mlflow.start_run(run_name="My final run"):
 
         # Load model, data, train and evaluate
         model = DecisionTreeModel(max_depth=max_depth)
@@ -62,6 +62,6 @@ if __name__ == '__main__':
 
         # Log model
         mlflow.sklearn.log_model(sk_model=model.tree,
-                                 artifact_path="my_artifact_path",
+                                 artifact_path="my_model",
                                  signature=signature,
                                  input_example=input_example)

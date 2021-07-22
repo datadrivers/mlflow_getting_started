@@ -32,11 +32,11 @@ import pickle
 #     "MyModel02"
 # )
 
-# or use the MlflowClient to update already registred model versions and stages
+# or use the MlflowClient to update already registered model versions and stages
 
 """ Delete """
-# mlflow.set_tracking_uri(mlflow_server_uri)
-# mlflow.set_registry_uri(mlflow_server_uri)
-#
-# client = MlflowClient()
-# client.delete_registered_model(name="MyModel01")
+mlflow.set_tracking_uri(mlflow_server_uri)
+mlflow.set_registry_uri(mlflow_server_uri)
+
+client = MlflowClient()
+client.delete_registered_model(name="My_wine_model")
