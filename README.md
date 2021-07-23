@@ -67,6 +67,7 @@ to deploy the model to different cloud platforms.
 * [Official documentation](https://www.mlflow.org/docs/latest/index.html)
 * [Managed MLflow by databricks](https://databricks.com/de/product/managed-mlflow) 
 * [Mlflow docker as a oneliner](https://github.com/Toumash/mlflow-docker)
+* [Databricks pricing](https://databricks.com/product/pricing)
 * [GCP Setup proposal](https://medium.com/@Sushil_Kumar/setting-up-mlflow-on-google-cloud-for-remote-tracking-of-machine-learning-experiments-b48e0122de04)
 * [AWS Setup proposal](https://aws.amazon.com/blogs/machine-learning/managing-your-machine-learning-lifecycle-with-mlflow-and-amazon-sagemaker/
 )
