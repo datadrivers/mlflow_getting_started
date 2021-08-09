@@ -2,10 +2,10 @@
 """
 import mlflow
 import pandas as pd
+from pandas import DataFrame
 from sklearn.datasets import load_wine
 import numpy as np
 import random
-
 from sklearn.model_selection import train_test_split
 
 
@@ -42,3 +42,26 @@ def load_airbnb_data():
                                                         df[["price"]].values.ravel(),
                                                         random_state=42)
     return X_train, X_test, y_train, y_test
+
+
+def preprocess_airbnb_data(df: DataFrame) -> DataFrame:
+
+    """ Do some preprocessing """
+    cols_to_drop = ["latitude", "longitude"]
+
+    df_processed = df.copy()
+    df_processed["trunc_lat"] = round(df["latitude"], 3)
+    df_processed["trunc_long"] = round(df["longitude"], 3)
+    df_processed["review_scores_sum"] = (
+            df['review_scores_accuracy'] +
+            df['review_scores_cleanliness'] +
+            df['review_scores_checkin'] +
+            df['review_scores_communication'] +
+            df['review_scores_location'] +
+            df['review_scores_value']
+    )
+    df_processed = df_processed.drop(cols_to_drop, axis=1)
+
+    return df_processed
+
+
