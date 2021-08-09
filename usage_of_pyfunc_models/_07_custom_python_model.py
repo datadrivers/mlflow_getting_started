@@ -4,6 +4,7 @@ import mlflow
 from config import mlflow_server_uri
 from sklearn.ensemble import RandomForestRegressor
 from utils import load_airbnb_data, preprocess_airbnb_data
+from mlflow.models.signature import infer_signature
 import cloudpickle
 
 
@@ -54,9 +55,12 @@ if __name__ == "__main__":
         'name': 'mlflow-env'
     }
 
+    signature = infer_signature(X_test, y_test)
+
     mlflow.pyfunc.log_model(python_model=my_custom_model,
                             artifact_path="rf_inc_pp",
                             registered_model_name="My_airbnb_model",
+                            # signature=signature,
                             conda_env=conda_env)
 
 
