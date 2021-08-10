@@ -2,7 +2,7 @@
 
 This repo aims to show some first steps with mlflow: 
 * Tracking
-* MLFLow Models
+* mlflow Models
 * Model Registry
 
 ## Contents
@@ -15,13 +15,23 @@ This repo aims to show some first steps with mlflow:
 
 ## General
 
-To use MLFlow one general needs:
+To use mlflow one general needs:
 * a server on which mlflow runs (incl. the ui)
 * an artifact store
 * a database as well as a connector (e.g. sqlite)
 
 Note that a database is not mandatory for tracking. If not specified, mlflow will create a specific folder strucure on the disk instead. 
 However, using the Model Registry is not possible in that case. 
+
+### Requirements
+
+Python 3.8 and requirements.txt  
+
+#### Pyspark Serving
+
+Note that the pyspark serving notebook is optional.  
+If you want to use it, you need to install pyspark and pyarrow as defined in the requirements.  
+Note that a corresponding java version needs to be installed as well to run spark.  
 
 ## Simulation on localhost
 
