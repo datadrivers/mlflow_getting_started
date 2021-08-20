@@ -7,6 +7,12 @@ from sklearn.datasets import load_wine
 import numpy as np
 import random
 from sklearn.model_selection import train_test_split
+import shutil
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+from mlflow.tracking import MlflowClient
+import os
+from typing import Tuple
 
 
 def get_latest_run_id(experiment_id: str) -> str:
@@ -29,6 +35,64 @@ def get_model_path_of_latest_run(experiment_id: str,
     return get_path_of_run_id(experiment_id,
                               get_latest_run_id(experiment_id),
                               suffix)
+
+
+def compare_plots(experiment_name: str,
+                  run_id_1: str,
+                  run_id_2: str,
+                  plot_name: str = "my_confusion_matrix.png",
+                  figsize: Tuple[int, int] = (12, 4)):
+
+    """
+    Workaround to compare two plots given two experiments.
+    This is just a quick and dirty workaround.
+    The possibility to compare artifacts might arise soon,
+    see e.g. https://github.com/mlflow/mlflow/pull/4413/commits.
+    """
+
+    # Initialize mlflow client
+    client = MlflowClient()
+    mlflow.set_experiment(experiment_name)
+
+    # Delete tmp download folder
+    try:
+        shutil.rmtree(os.getcwd() + "/download")
+    except:
+        pass
+
+    # Build plot
+    fig = plt.figure(figsize=figsize)
+    plt.title(f"Comparison of {plot_name}")
+    plt.tick_params(left=False, right=False, labelleft=False,
+                    labelbottom=False, bottom=False)
+
+    # Build first subplot
+    ax1 = fig.add_subplot(1, 2, 1)
+    # Download and read
+    os.mkdir(os.getcwd() + "/download")
+    local_path = client.download_artifacts(run_id=run_id_1,
+                                           path="",
+                                           dst_path=os.getcwd() + "/download/")
+    path_to_picture = local_path + plot_name
+    # Show
+    ax1.imshow(mpimg.imread(path_to_picture))
+    plt.tick_params(left=False, right=False, labelleft=False,
+                    labelbottom=False, bottom=False)
+
+    # Build second subplot
+    ax1 = fig.add_subplot(1, 2, 2)
+    # Download and read
+    local_path = client.download_artifacts(run_id=run_id_2,
+                                           path="",
+                                           dst_path=os.getcwd() + "/download/")
+    # Show
+    ax1.imshow(mpimg.imread(path_to_picture))
+    plt.tick_params(left=False, right=False, labelleft=False,
+                    labelbottom=False, bottom=False)
+
+    # Show plot and delete tmp download folder
+    plt.show()
+    shutil.rmtree(os.getcwd() + "/download")
 
 
 def get_random_wine_classifier_input() -> np.array:
