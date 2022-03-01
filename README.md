@@ -1,13 +1,17 @@
-# mlflow - Getting started
+![mlflow](https://mlflow.org/images/MLflow-logo-final-white-TM.png)
 
-This repo aims to show some first steps with mlflow: 
+# Getting started with mlflow
+
+![python](https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg)
+
+This repo aims to show some first steps with mlflow.
 * Tracking
-* mlflow Models
+* Models
 * Model Registry
 
 ## Contents
 
-- [mlflow - Getting started](#mlflow---getting-started)
+- [Getting started with mlflow](#getting-started-with-mlflow)
   * [General](#general)
   * [Simulation on localhost](#simulation-on-localhost)
   * [Further reading](#further-reading)
@@ -21,11 +25,7 @@ To use mlflow one general needs:
 * a database as well as a connector (e.g. sqlite)
 
 Note that a database is not mandatory for tracking. If not specified, mlflow will create a specific folder strucure on the disk instead. 
-However, using the Model Registry is not possible in that case. 
-
-### Requirements
-
-Python 3.8 and requirements.txt  
+However, using the Model Registry is not possible in that case.
 
 #### Pyspark Serving
 
