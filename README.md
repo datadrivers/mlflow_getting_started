@@ -1,4 +1,4 @@
-![mlflow](https://mlflow.org/images/MLflow-logo-final-white-TM.png)
+![mlflow](https://s20.directupload.net/images/220301/qlrp88lw.png)
 
 # Getting started with mlflow
 
