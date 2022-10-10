@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mlflow_getting_started"
+version = "0.1.0"
+description = "Getting familiar with the concept of model tracking and registry"
+authors = ["CarstenFrommhold <carsten.frommhold@datadrivers.de>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mlflow = "^1.29.0"
+pandas = "^1.5.0"
+scikit-learn = "^1.1.2"
+matplotlib = "^3.6.1"
+
+[tool.poetry.dev-dependencies]
+pyspark = "^3.0.3"
+pyarrow = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -2,8 +2,6 @@
 
 # Getting started with mlflow
 
-![python](https://upload.wikimedia.org/wikipedia/commons/a/a5/Blue_Python_3.8_Shield_Badge.svg)
-
 This repo aims to show some first steps with mlflow.
 * Tracking
 * Models
@@ -24,7 +22,7 @@ To use mlflow one general needs:
 * an artifact store
 * a database as well as a connector (e.g. sqlite)
 
-Note that a database is not mandatory for tracking. If not specified, mlflow will create a specific folder strucure on the disk instead. 
+Note that a database is not mandatory for tracking. If not specified, mlflow will create a specific folder structure on the disk instead. 
 However, using the Model Registry is not possible in that case.
 
 #### Pyspark Serving
@@ -37,13 +35,26 @@ Note that a corresponding java version needs to be installed as well to run spar
 
 Here, localhost simulates a cloud on which mlflow is running. A dedicated folder resp. database simulates the artifact store and remote database. 
 
-First, set up a virtual environment given the requirements and create an empty database, e.g. via sqlite.  
-Then start mlflow ui in your active virtual environment and navigate to folder "my_cloud".
+First, set up a virtual environment given the requirements. 
+
+Then, create an empty database, e.g. via sqlite which should be built in for macOs.  
+
+``` console
+cd cloud_mock
+sqlite 3
+```
+
+``` console
+.save mlflow.db
+.exit
+```
+
+Then start mlflow ui in your active virtual environment and start mlflow server while you're working directory is *cloud_mock*.
 
 ```console
 mlflow server \
     --backend-store-uri sqlite:///mlflow.db \
-    --default-artifact-root ./../my_cloud/artifacts \
+    --default-artifact-root ./../cloud_mock/artifacts \
     --host 127.0.0.1
 ```
 

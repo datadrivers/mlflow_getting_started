@@ -48,5 +48,5 @@ if __name__ == '__main__':
 
         # Save a model under a specific path
         # mlflow.sklearn.save_model(sk_model=clf,
-        #                           path="../../my_cloud/my_specific_bucket/my_specific_saved_model")
+        #                           path="../../cloud_mock/my_specific_bucket/my_specific_saved_model")
 
