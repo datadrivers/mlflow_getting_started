@@ -2,3 +2,4 @@
 mlruns/
 artifacts/
 venv/
+.ipynb_checkpoints
